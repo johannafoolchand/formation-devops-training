@@ -54,8 +54,8 @@ jobs:
 
     # 3. Build the Docker image
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/Flask_app_Johanna:latest .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/flask_app_johanna:latest .
 
     # 4. Push the image to Docker Hub
     - name: Push Docker image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/Flask_app_Johanna:latest        
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/flask_app_johanna:latest        
