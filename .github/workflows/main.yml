@@ -32,4 +32,8 @@ jobs:
     # 3. Run tests
     - name: Run unit tests
       run: |
-        pytest
+        pytest tests/test_unitaires.py
+
+    - name: Run integration tests
+      run: |
+        pytest tests/test_integration.py
