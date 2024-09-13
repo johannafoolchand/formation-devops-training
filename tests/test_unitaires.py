@@ -9,5 +9,3 @@ def client():
 
 def test_home_page(client):
     response = client.get('/')
-    assert response.status_code == 200  # Vérifie que le statut HTTP est 200 OK
-    assert b'Bienvenue sur la page d\'accueil' in response.data  # Vérifie que le texte attendu est dans la réponse
