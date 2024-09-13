@@ -1,14 +1,13 @@
-import unittest
-from flask_testing import TestCase
-from main import app, db, Task  # On importe directement depuis main.py
+import pytest
+from main import app
 
-class YourAppTestCase(TestCase):
-    def create_app(self):
-        app.config['TESTING'] = True
-        # Utilisation d'une base de données de test en mémoire
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-        return app
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
 
-if __name__ == '__main__':
-    unittest.main()
+def test_home_page(client):
+    response = client.get('/')
+    assert response.status_code == 200  # Vérifie que le statut HTTP est 200 OK
+    assert b'Bienvenue sur la page d\'accueil' in response.data  # Vérifie que le texte attendu est dans la réponse
