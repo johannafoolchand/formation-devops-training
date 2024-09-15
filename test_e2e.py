@@ -10,7 +10,7 @@ def base_url():
 
 # Définir une fixture pytest pour configurer l'application Flask pour les tests
 @pytest.fixture
-def setup_app():
+def setup_app(base_url):
     yield       
 
 # Fonction pour extraire les IDs des tâches à partir du contenu de la réponse
