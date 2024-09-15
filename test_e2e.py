@@ -13,7 +13,6 @@ def base_url():
 @pytest.fixture
 def setup_app():
     app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@db:5432/mydatabase'
     with app.app_context():
         db.create_all()
         yield app.test_client()
