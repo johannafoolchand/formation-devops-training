@@ -15,7 +15,10 @@ services:
  
   db:
     image: postgres:latest
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+    restart: on-failure
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: myuser
@@ -24,9 +27,3 @@ services:
       - "5432:5432"
     volumes:
       - $HOME/postgresql_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      retries: 5
-      start_period: 30s
-      timeout: 5s
