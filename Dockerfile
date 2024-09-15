@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py .
 COPY test_e2e.py .
 
-RUN mkdir -p instance
+
 RUN mkdir -p templates
 
 
