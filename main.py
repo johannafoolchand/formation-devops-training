@@ -5,10 +5,8 @@ import os
 
 app = Flask(__name__)
 
-# Configuration du chemin relatif pour la base de données SQLite
-db_path = os.path.join(os.path.dirname(__file__), 'instance', 'tasks.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.path.abspath(db_path)
-app.config['SECRET_KEY'] = 'secret_key'  # Clé secrète pour les messages flash
+# Configuration du chemin relatif pour la base de données PostgreSQL
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@db:5432/mydatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Création de l'objet SQLAlchemy
