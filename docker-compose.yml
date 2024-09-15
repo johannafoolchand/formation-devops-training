@@ -1,6 +1,21 @@
-version: '3'
 
 services:
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - $HOME/postgresql_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      retries: 5
+
   web:
     image: johannafld/flask_app_johanna:${APP_VERSION} 
     build: .
@@ -14,13 +29,3 @@ services:
       - db
   
  
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-    ports:
-      - "5432:5432"
-    volumes:
-      - $HOME/postgresql_data:/var/lib/postgresql/data
