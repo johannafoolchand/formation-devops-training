@@ -22,7 +22,7 @@ def setup_app():
 # Fonction pour extraire les IDs des tâches à partir du contenu de la réponse
 def extract_task_ids(response_content):
     # Define a regular expression pattern to match task IDs in the href="/delete/4" format
-    pattern = b'href="/delete/(\d+)"'
+    pattern = b'id=t\d+)"'
     # Use re.findall to extract all task IDs from the response content
     task_ids = re.findall(pattern, response_content)
     # Convertion des tasks_ids de string a int
