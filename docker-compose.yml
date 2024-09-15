@@ -1,8 +1,21 @@
 
 services:
-
+  web:
+    image:  johannafld/flask_app_johanna:${APP_VERSION}
+    build: .
+    environment:
+      - DB_HOST=db
+    ports:
+      - "5000:5000"
+    volumes:
+     - ./main.py:/app/main.py
+    depends_on:
+      - db
+    
+ 
   db:
     image: postgres:latest
+    restart: always
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: myuser
@@ -11,22 +24,3 @@ services:
       - "5432:5432"
     volumes:
       - $HOME/postgresql_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      retries: 5
-
-  web:
-    image: johannafld/flask_app_johanna:${APP_VERSION} 
-    build: .
-    environment:
-      - DB_HOST=db
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./main.py:/app/main.py
-    depends_on:
-      - db
-    restart: always
-  
- 
