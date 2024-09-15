@@ -12,7 +12,7 @@ def base_url():
 @pytest.fixture
 def setup_app():
     app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'qlite:////formation-devops-training/terraform-outscale/ap_v1/templates/instance/tasks.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////formation-devops-training/tasks.db'
     with app.app_context():
         db.create_all()
         yield

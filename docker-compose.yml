@@ -1,0 +1,27 @@
+
+services:
+  web:
+    image: leroy971/demo:${APP_VERSION} 
+    build: .
+    environment:
+      - DB_HOST=db
+    ports:
+      - "5000:5000"
+    volumes:
+     - ./app.py:/app/app.py
+    depends_on:
+      - db
+    
+ 
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - $HOME/postgresql_data:/var/lib/postgresql/data
+    
