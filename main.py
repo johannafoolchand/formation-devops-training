@@ -89,9 +89,6 @@ def page_not_found(error):
 
 # Démarrage de l'application Flask
 if __name__ == '__main__':
-    # Créer le dossier instance s'il n'existe pas
-    if not os.path.exists(os.path.dirname(db_path)):
-        os.makedirs(os.path.dirname(db_path))
 
     with app.app_context():
         db.create_all()  # Cette commande crée la base de données et la table Task si elles n'existent pas déjà
