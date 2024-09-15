@@ -27,7 +27,7 @@ def extract_task_ids(response_content):
 def test_add_and_delete_task(base_url, setup_app):
     # Test d'ajout d'une tâche
     response = requests.post(f'{base_url}/add', data={'task': 'Nouvelle tache'})
-    assert response.status_code == 200 
+    assert response.content == 200 
 
     # Vérifier que la tâche a été ajoutée
     response = requests.get(f'{base_url}')
