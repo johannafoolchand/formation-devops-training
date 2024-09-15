@@ -1,7 +1,7 @@
 
 services:
   web:
-    image: leroy971/demo:${APP_VERSION} 
+    image: johannafld/flask_app_johanna:${APP_VERSION} 
     build: .
     environment:
       - DB_HOST=db
