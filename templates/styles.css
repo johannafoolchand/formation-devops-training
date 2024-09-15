@@ -9,7 +9,6 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-image: url('path/to/your/decorative-image.png'); /* Ajouter un fond décoratif */
     background-size: cover;
     background-repeat: no-repeat;
 }
