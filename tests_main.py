@@ -7,7 +7,7 @@ class YourAppTestCase(TestCase):
     def create_app(self):
         app.config['TESTING'] = True
         # Utilisation d'une base de données de test en mémoire
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db''
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         return app
 
