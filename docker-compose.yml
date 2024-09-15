@@ -27,5 +27,6 @@ services:
       - ./main.py:/app/main.py
     depends_on:
       - db
+    restart: always
   
  
