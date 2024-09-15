@@ -14,7 +14,7 @@ RUN mkdir -p templates
 
 
 COPY templates/index.html  templates/index.html
-
+COPY templates/styles.css  templates/styles.css
 
 # Installez les dépendances
 RUN pip install --no-cache-dir -r requirements.txt

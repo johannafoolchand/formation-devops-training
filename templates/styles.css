@@ -1,0 +1,245 @@
+/* Police et couleurs de base */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F1FB; /* Lavande douce */
+    color: #4B2C5E; /* Violet foncé pour le texte */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-image: url('path/to/your/decorative-image.png'); /* Ajouter un fond décoratif */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Barre de navigation */
+.navbar {
+    width: 100%;
+    background-color: #8E24AA; /* Violet vif */
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #F8BBD0; /* Rose clair */
+}
+
+/* Conteneur principal */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.3s;
+    margin-top: 80px; /* Pour ne pas chevaucher la navbar */
+    position: relative;
+    z-index: 1;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* Titre */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #6A1B9A; /* Lavande intense */
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #6A1B9A;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Liste des tâches */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list li {
+    background-color: #EDE7F6; /* Fond lavande clair */
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #8E24AA; /* Barre violette sur le côté */
+}
+
+.task-list li:hover {
+    background-color: #D1C4E9; /* Lavande plus foncée au survol */
+}
+
+/* Bouton de suppression */
+.delete-button {
+    background-color: #F8BBD0; /* Rose clair */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.delete-button:hover {
+    background-color: #E91E63; /* Rose plus foncé */
+    transform: scale(1.1);
+}
+
+/* Formulaire d'ajout */
+.add-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.2em;
+}
+
+.add-form input {
+    padding: 8px;
+    width: 70%;
+    border: 2px solid #D1C4E9; /* Lavande léger */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.add-form input:focus {
+    border-color: #6A1B9A; /* Violet au focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(106, 27, 154, 0.5); /* Effet de focus */
+}
+
+.add-button {
+    background-color: #8E24AA; /* Violet vif */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.add-button:hover {
+    background-color: #6A1B9A; /* Violet plus sombre */
+    transform: scale(1.1);
+}
+
+/* Notifications de confirmation ou d'erreur */
+.notification {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background-color: #8E24AA; /* Violet vif */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 100;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+/* Pied de page */
+.footer {
+    width: 100%;
+    background-color: #8E24AA; /* Violet vif */
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    font-size: 1em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.footer a {
+    color: #F8BBD0;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* Décorations */
+body::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    background-color: #F8BBD0;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background-color: #D1C4E9;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: 0;
+}
