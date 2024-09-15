@@ -3,6 +3,8 @@ services:
   web:
     image: johannafld/flask_app_johanna:${APP_VERSION} 
     build: .
+      environment:
+      - DB_HOST=db  
     ports:
       - "5000:5000"
     volumes:
