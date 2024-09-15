@@ -11,14 +11,8 @@ def base_url():
 
 # Définir une fixture pytest pour configurer l'application Flask pour les tests
 @pytest.fixture
-def setup_app():
-    app.config['TESTING'] = True
-    with app.app_context():
-        db.create_all()
-        yield app.test_client()
-        db.session.remove()
-        db.drop_all()
-
+def setup_app(base_url):
+    yield
 
 # Fonction pour extraire les IDs des tâches à partir du contenu de la réponse
 def extract_task_ids(response_content):
