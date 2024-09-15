@@ -23,6 +23,7 @@ REQUEST_COUNT = Counter(
     'http_requests_total', 'Total number of HTTP requests',
     ['method', 'endpoint', 'http_status']
 )
+
 REQUEST_LATENCY = Histogram(
     'http_request_duration_seconds', 'HTTP request latency',
     ['method', 'endpoint']
