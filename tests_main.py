@@ -34,7 +34,7 @@ class YourAppTestCase(TestCase):
         db.session.add(test_task)
         db.session.commit()
 
-        response = self.client.post(f'/delete/{test_task.id}')
+        response = self.client.get(f'/delete/{test_task.id}')
         self.assertEqual(response.status_code, 302)  # Vérification de la redirection
 
         # Assurez-vous que la tâche a été supprimée de la base de données
