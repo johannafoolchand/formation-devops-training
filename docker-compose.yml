@@ -30,4 +30,8 @@ services:
       - $HOME/postgresql_data:/var/lib/postgresql/data
     networks:
       - mynetwork
-        
+
+
+networks:
+  mynetwork:
+    driver: bridge
