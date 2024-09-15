@@ -10,9 +10,8 @@ services:
     volumes:
      - ./main.py:/app/main.py
     depends_on:
-      db:
-        condition: service_healthy
- 
+      - db
+
   db:
     image: postgres:latest
     deploy:
