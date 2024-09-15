@@ -12,6 +12,7 @@ def base_url():
 # Définir une fixture pytest pour configurer l'application Flask pour les tests
 @pytest.fixture
 def setup_app(base_url):
+    app.config['SECRET_KEY'] = 'secret_key'
     yield
 
 # Fonction pour extraire les IDs des tâches à partir du contenu de la réponse
@@ -27,6 +28,7 @@ def extract_task_ids(response_content):
 def test_add_and_delete_task(base_url, setup_app):
     # Test d'ajout d'une tâche
     response = requests.post(f'{base_url}/add', data={'task': 'Nouvelle tache'})
+    assert response.status_code == 200 
 
     # Vérifier que la tâche a été ajoutée
     response = requests.get(f'{base_url}')
