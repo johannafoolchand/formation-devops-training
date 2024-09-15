@@ -14,8 +14,6 @@ services:
      - ./main.py:/app/main.py
     depends_on:
       - db
-    networks:
-      - mynetwork
 
   db:
     image: postgres:latest
@@ -32,10 +30,3 @@ services:
       - "5432:5432"
     volumes:
       - $HOME/postgresql_data:/var/lib/postgresql/data
-    networks:
-      - mynetwork
-
-
-networks:
-  mynetwork:
-    driver: bridge
