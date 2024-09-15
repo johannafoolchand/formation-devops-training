@@ -28,7 +28,7 @@ def index():
 # Route pour ajouter une nouvelle tâche
 @app.route('/add', methods=['POST'])
 def add():
-    task_description = request.form['task']
+    task_description =request.form.get("task") 
     if task_description:
         new_task = Task(description=task_description)
         db.session.add(new_task)
