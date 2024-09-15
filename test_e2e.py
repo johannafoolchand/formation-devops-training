@@ -16,7 +16,7 @@ def setup_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@db:5432/mydatabase'
     with app.app_context():
         db.create_all()
-        yield
+        yield app.test_client()
         db.session.remove()
         db.drop_all()
 
