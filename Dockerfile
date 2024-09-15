@@ -4,10 +4,9 @@ FROM python:3.8-slim
 WORKDIR /app
 
 
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiez les fichiers nécessaires dans le conteneur
-COPY requirements.txt .
 COPY main.py .
 COPY test_e2e.py .
 
