@@ -12,7 +12,7 @@ COPY test_e2e.py .
 RUN mkdir -p instance
 RUN mkdir -p templates
 
-COPY instance/tasks.db  instance/tasks.db
+
 COPY templates/index.html  templates/index.html
 
 
