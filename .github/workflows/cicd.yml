@@ -59,6 +59,7 @@ jobs:
           mkdir -p postgresql_data
           docker-compose -f docker-compose.yml build 
           docker-compose -f docker-compose.yml up -d
+          sleep 15
           
       - name: Show containers
         run: |
