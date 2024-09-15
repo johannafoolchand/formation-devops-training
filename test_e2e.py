@@ -11,7 +11,7 @@ def base_url():
 
 # Définir une fixture pytest pour configurer l'application Flask pour les tests
 @pytest.fixture
-def setup_app(base_url):
+def setup_app():
     app.config['TESTING'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@db:5432/mydatabase'
     with app.app_context():
@@ -20,7 +20,6 @@ def setup_app(base_url):
         db.session.remove()
         db.drop_all()
 
-    yield       
 
 # Fonction pour extraire les IDs des tâches à partir du contenu de la réponse
 def extract_task_ids(response_content):
