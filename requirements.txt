@@ -4,3 +4,4 @@ pytest
 flask_testing
 requests
 psycopg2-binary
+prometheus_client
