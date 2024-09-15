@@ -3,6 +3,7 @@ from prometheus_client import Counter, Histogram, generate_latest
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
 import os
+import time
 
 app = Flask(__name__)
 
