@@ -59,7 +59,10 @@ jobs:
           mkdir -p postgresql_data
           docker-compose -f docker-compose.yml build 
           docker-compose -f docker-compose.yml up -d
-          sleep 60
+          while ! docker-compose -f docker-compose.yml exec db pg_isready -U postgres; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 5
+          done
           
       - name: Show containers
         run: |
