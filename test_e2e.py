@@ -42,7 +42,7 @@ def test_add_and_delete_task(base_url, setup_app):
     task_ids = extract_task_ids(response.content)
     for task_id in task_ids:
         # Test de suppression de la tâche
-        response = requests.post(f'{base_url}/delete/{task_id}')
+        response = requests.get(f'{base_url}/delete/{task_id}')
         assert response.status_code == 200  # Assurez-vous que la redirection après la suppression est réussie
 
     # Vérifier que toutes les tâches ont été supprimées
@@ -57,4 +57,4 @@ def test_index_page(base_url, setup_app):
     assert response.status_code == 200  # Assurez-vous que la page d'accueil est accessible
 
     # Vous pouvez également vérifier le contenu de la réponse pour vous assurer que vos données sont correctement rendues
-    assert b'Tasks' in response.content  # Vérifiez qu'une chaîne attendue est présente dans le contenu
+    assert b'ToDo List' in response.content  # Vérifiez qu'une chaîne attendue est présente dans le contenu
