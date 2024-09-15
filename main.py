@@ -45,7 +45,7 @@ def before_request():
 # Fonction exécutée après chaque requête pour enregistrer les métriques
 @app.after_request
 def after_request(response):
-    if request.endpoint in ['index', 'add', 'delete', 'update']:
+    if request.endpoint in ['index', 'add', 'delete']:
         request_end_time = time.time()
         request_latency = request_end_time - request._start_time
         path = request.path
