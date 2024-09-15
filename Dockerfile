@@ -3,15 +3,18 @@ FROM python:3.8-slim
 # Créez et définissez le répertoire de travail
 WORKDIR /app
 # Copiez les fichiers nécessaires dans le conteneur
-COPY requirements.txt /app
-COPY main.py /app
+COPY requirements.txt .
 
-RUN mkdir -p /app/instance
-RUN mkdir -p /app/templates
+COPY main.py .
+COPY tests_main.py .
+COPY test_e2e.py .
 
-COPY instance/tasks.db  /app/instance/
-COPY templates/index.html  /app/templates/
-RUN chmod -R 777 /app/instance
+RUN mkdir -p instance
+RUN mkdir -p templates
+
+COPY instance/tasks.db  instance/tasks.db
+COPY templates/index.html  templates/index.html
+
 
 # Installez les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
