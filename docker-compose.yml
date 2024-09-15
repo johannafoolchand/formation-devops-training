@@ -5,13 +5,18 @@ services:
     build: .
     environment:
       - DB_HOST=db  
+      - DB_NAME=mydatabase
+      - DB_USER=myuser
+      - DB_PASS=mypassword
     ports:
       - "5000:5000"
     volumes:
      - ./main.py:/app/main.py
     depends_on:
       - db
-          
+    networks:
+      - mynetwork
+
   db:
     image: postgres:latest
     restart: always
@@ -23,4 +28,6 @@ services:
       - "5432:5432"
     volumes:
       - $HOME/postgresql_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
         
