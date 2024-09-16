@@ -34,7 +34,7 @@
 
     - name: Lancer l'application Flask en arrière-plan
       shell: |
-        nohup python3 /home/outscale/formation-devops-training/main.py > /var/log/flask_app/app.log 2>&1 &
+        nohup python3 /home/outscale/formation-devops-training/app.py > /var/log/flask_app/app.log 2>&1 &
       args:
         executable: /bin/bash
 
