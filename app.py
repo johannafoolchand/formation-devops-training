@@ -24,38 +24,6 @@ class Task(db.Model):
     description = db.Column(db.String(200), nullable=False)
 
 
-# Compteur et histogramme pour les métriques Prometheus
-REQUEST_COUNT = Counter(
-    'http_requests_total', 'Total number of HTTP requests',
-    ['method', 'endpoint', 'http_status']
-)
-
-REQUEST_LATENCY = Histogram(
-    'http_request_duration_seconds', 'HTTP request latency',
-    ['method', 'endpoint']
-)
-
-# Route pour exposer les métriques Prometheus
-@app.route('/metrics')
-def metrics():
-    return generate_latest()
-
-# Fonction exécutée avant chaque requête
-@app.before_request
-def before_request():
-    request._start_time = time.time()
-
-# Fonction exécutée après chaque requête pour enregistrer les métriques
-@app.after_request
-def after_request(response):
-    if request.endpoint in ['index', 'add', 'delete']:
-        request_end_time = time.time()
-        request_latency = request_end_time - request._start_time
-        path = request.path
-        REQUEST_COUNT.labels(request.method, path, response.status_code).inc()
-        REQUEST_LATENCY.labels(request.method, path).observe(request_latency)
-    return response
-
 # Route pour afficher les tâches
 @app.route('/')
 def index():
@@ -92,7 +60,7 @@ def page_not_found(error):
 
 # Démarrage de l'application Flask
 if __name__ == '__main__':
-
+    time.sleep(80)
     with app.app_context():
         db.create_all()  # Cette commande crée la base de données et la table Task si elles n'existent pas déjà
     app.run(host='0.0.0.0', port=5000, debug=True)
