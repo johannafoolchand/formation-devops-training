@@ -68,12 +68,6 @@ jobs:
           docker-compose -f docker-compose.yml up -d
           sleep 15
           
-      - name: Show containers
-        run: |
-          docker-compose -f docker-compose.yml up -d
-          docker-compose -f docker-compose.yml ps
-          docker-compose -f docker-compose.yml logs
-          docker network ls
 
       - name: Install dependencies
         run: |
