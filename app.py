@@ -60,7 +60,7 @@ def page_not_found(error):
 
 # Démarrage de l'application Flask
 if __name__ == '__main__':
-    time.sleep(80)
+    time.sleep(25)
     with app.app_context():
         db.create_all()  # Cette commande crée la base de données et la table Task si elles n'existent pas déjà
     app.run(host='0.0.0.0', port=5000, debug=True)
