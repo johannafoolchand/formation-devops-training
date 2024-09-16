@@ -102,7 +102,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: tests_unitaires
+    needs: tests_unitaires_integration
     env:
       APP_VERSION: ${{ needs.build_and_push.outputs.app_version }}
 
