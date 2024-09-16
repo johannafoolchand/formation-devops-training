@@ -21,6 +21,6 @@ services:
     ports:
       - "5000:5000"
     volumes:
-     - ./app.py:/app/app.py
+     - ./main.py:/app/main.py
     depends_on:
       - db
