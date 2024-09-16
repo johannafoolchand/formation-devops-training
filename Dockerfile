@@ -12,11 +12,12 @@ COPY test_e2e.py .
 
 
 RUN mkdir -p templates
+RUN mkdir -p static
 
 
 COPY templates/index.html  templates/index.html
 COPY templates/404.html  templates/404.html
-COPY templates/styles.css  templates/styles.css
+COPY templates/styles.css  static/styles.css
 
 VOLUME [ "/app/data" ]
 
