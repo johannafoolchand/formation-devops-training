@@ -41,6 +41,10 @@ jobs:
     steps:
       - name: Restart Docker
         run: sudo systemctl restart docker
+      - name: Clean up Docker
+        run: |
+          docker system prune --all --force
+          docker volume prune --force
 
       - name: Checkout repository
         uses: actions/checkout@v2
