@@ -1,7 +1,6 @@
 import pytest
 import requests
 import re
-from main import app, db, Task
 
 
 # Définir une fixture pytest pour l'URL de base de l'application
