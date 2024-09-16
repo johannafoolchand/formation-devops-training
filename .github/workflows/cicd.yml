@@ -14,7 +14,7 @@ jobs:
       app_version: ${{ steps.set_version.outputs.app_version }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set APP_VERSION environment variable
         id: set_version
         run: echo "::set-output name=app_version::v$(date +%Y%m%d%H%M%S)"
@@ -42,7 +42,7 @@ jobs:
           docker system prune --all --force
           docker volume prune --force
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -91,7 +91,7 @@ jobs:
       APP_VERSION: ${{ needs.build_and_push.outputs.app_version }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
