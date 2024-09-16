@@ -31,8 +31,8 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/flask_app_johanna:${{ steps.set_version.outputs.app_version }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/flask_app_johanna:${{ steps.set_version.outputs.app_version }}
-  tests_unitaires:
-    name: Run Unit Tests
+  tests_unitaires_integration:
+    name: Run Unit and Integration Tests
     runs-on: ubuntu-latest
     needs: build_and_push
     env:
@@ -66,7 +66,7 @@ jobs:
           mkdir -p postgresql_data
           docker-compose -f docker-compose.yml build 
           docker-compose -f docker-compose.yml up -d
-          sleep 15
+          
           
       - name: Show containers
         run: |
@@ -88,14 +88,6 @@ jobs:
             python:3.10-slim bash
           docker exec -i unit_tests python3 -m pip install -r requirements.txt
           docker exec -i unit_tests python3 /opt/formation-devops-training/tests_main.py
-
-      - name: Show containers
-        run: |
-          docker-compose -f docker-compose.yml up -d
-          docker-compose -f docker-compose.yml ps
-          docker-compose -f docker-compose.yml logs
-          docker network ls
-
 
       - name: Run integration test
         run: |

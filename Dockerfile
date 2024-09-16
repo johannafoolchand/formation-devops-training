@@ -7,7 +7,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+COPY main.py .
 COPY test_e2e.py .
 
 
@@ -15,7 +15,7 @@ RUN mkdir -p templates
 
 
 COPY templates/index.html  templates/index.html
-#COPY templates/styles.css  templates/styles.css
+COPY templates/styles.css  templates/styles.css
 
 VOLUME [ "/app/data" ]
 
@@ -23,4 +23,4 @@ VOLUME [ "/app/data" ]
 # Exposez le port sur lequel l'application sera accessible
 EXPOSE 5000
 # Commande pour démarrer l'application Flask
-CMD ["python", "app.py"]
+CMD ["python", "main.py"]
