@@ -68,6 +68,12 @@ jobs:
           docker-compose -f docker-compose.yml up -d
           sleep 15
           
+      - name: Show containers
+        run: |
+          docker-compose -f docker-compose.yml up -d
+          docker-compose -f docker-compose.yml ps
+          docker-compose -f docker-compose.yml logs
+          docker network ls
 
       - name: Install dependencies
         run: |
@@ -82,6 +88,14 @@ jobs:
             python:3.10-slim bash
           docker exec -i unit_tests python3 -m pip install -r requirements.txt
           docker exec -i unit_tests python3 /opt/formation-devops-training/tests_main.py
+
+      - name: Show containers
+        run: |
+          docker-compose -f docker-compose.yml up -d
+          docker-compose -f docker-compose.yml ps
+          docker-compose -f docker-compose.yml logs
+          docker network ls
+
 
       - name: Run integration test
         run: |
