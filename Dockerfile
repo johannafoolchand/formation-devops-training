@@ -23,4 +23,4 @@ VOLUME [ "/app/data" ]
 # Exposez le port sur lequel l'application sera accessible
 EXPOSE 5000
 # Commande pour démarrer l'application Flask
-CMD ["python", "main.py"]
+CMD ["python", "app.py"]
