@@ -95,5 +95,5 @@ if __name__ == '__main__':
     time.sleep(10)
     with app.app_context():
         db.create_all()  # Cette commande crée la base de données et la table Task si elles n'existent pas déjà
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
 
