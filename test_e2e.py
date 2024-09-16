@@ -24,6 +24,7 @@ def extract_task_ids(response_content):
 
 # Test d'ajout et de suppression de tâches
 def test_add_and_delete_task(base_url, setup_app):
+    time.sleep(25)
     # Test d'ajout d'une tâche
     response = requests.post(f'{base_url}/add', data={'task': 'Nouvelle tache'})
     assert response.content == 200 
@@ -47,6 +48,7 @@ def test_add_and_delete_task(base_url, setup_app):
 
 # Test de la page d'accueil
 def test_index_page(base_url, setup_app):
+    time.sleep(25)
     # Test de la page d'index
     response = requests.get(f'{base_url}/')
     assert response.status_code == 200  # Assurez-vous que la page d'accueil est accessible
