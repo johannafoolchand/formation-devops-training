@@ -15,6 +15,7 @@ RUN mkdir -p templates
 
 
 COPY templates/index.html  templates/index.html
+COPY templates/404.html  templates/404.html
 COPY templates/styles.css  templates/styles.css
 
 VOLUME [ "/app/data" ]
