@@ -1,7 +1,7 @@
-Flask==3.0.0
+Flask==3.0.3
 Flask-SQLAlchemy==3.0.2
-pytest
-flask_testing
-requests
 psycopg2-binary
+flask_testing==0.8.1
+pytest==8.0.1
+requests==2.31.0
 prometheus_client
