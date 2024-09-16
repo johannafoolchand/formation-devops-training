@@ -1,9 +1,9 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "packageFile": ["/requirements.txt"],
+    "packageFile": ["requirements.txt"],
     "packageRules": [
         {
-        "matchFileNames": ["/requirements.txt"],
+        "matchFileNames": ["requirements.txt"],
         "automerge": false
         }
     ]
