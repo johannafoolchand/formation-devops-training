@@ -74,6 +74,8 @@ jobs:
           docker-compose -f docker-compose.yml ps
           docker-compose -f docker-compose.yml logs
           docker network ls
+          docker exec -i unit_tests ls
+          docker exec -i unit_tests pwd   
 
       - name: Install dependencies
         run: |
@@ -88,6 +90,7 @@ jobs:
             python:3.10-slim bash
           docker exec -i unit_tests python3 -m pip install -r requirements.txt
           docker exec -i unit_tests python3 /opt/formation-devops-training/tests_main.py
+
 
       - name: Run integration test
         run: |
