@@ -1,26 +1,26 @@
-
 services:
-
+  # Service de base de données PostgreSQL
   db:
-    image: postgres:latest
-    restart: always
+    image: postgres:latest  # Utilise la dernière version de l'image PostgreSQL
+    restart: always  # Redémarre automatiquement le conteneur en cas d'échec
     environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase        # Nom de la base de données
+      POSTGRES_USER: myuser          # Nom d'utilisateur pour se connecter à la base de données
+      POSTGRES_PASSWORD: mypassword  # Mot de passe pour l'utilisateur de la base de données
     ports:
-      - "5432:5432"
+      - "5432:5432"  # Expose le port 5432 pour accéder à PostgreSQL depuis l'hôte
     volumes:
-      - $HOME/postgresql_data:/var/lib/postgresql/data
-    
+      - $HOME/postgresql_data:/var/lib/postgresql/data  # Monte un volume pour la persistance des données de la base de données
+
+  # Service de l'application web Flask
   web:
-    image:  johannafld/flask_app_johanna:${APP_VERSION}
-    build: .
+    image: johannafld/flask_app_johanna:${APP_VERSION}  # Utilise une image Docker personnalisée avec la version spécifiée par la variable d'environnement APP_VERSION
+    build: .  # Construit l'image à partir du Dockerfile dans le répertoire courant
     environment:
-      - DB_HOST=db
+      - DB_HOST=db  # Définit la variable d'environnement DB_HOST pour indiquer le nom du service de base de données
     ports:
-      - "5000:5000"
+      - "5000:5000"  # Expose le port 5000 pour accéder à l'application Flask depuis l'hôte
     volumes:
-     - ./main.py:/app/main.py
+      - ./main.py:/app/main.py  # Monte le fichier main.py dans le conteneur pour le développement en direct
     depends_on:
-      - db
+      - db  # Assure que le service de base de données est démarré avant l'application web
