@@ -1,6 +1,5 @@
 import unittest
 from flask_testing import TestCase
-from main import app, db, Task  # On importe directement depuis main.py
 
 class YourAppTestCase(TestCase):
 
