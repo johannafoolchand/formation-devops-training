@@ -1,7 +1,7 @@
 import pytest
 import requests
 import re
-
+import time
 
 # Définir une fixture pytest pour l'URL de base de l'application
 @pytest.fixture
