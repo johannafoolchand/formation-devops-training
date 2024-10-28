@@ -19,7 +19,7 @@ zone_name = 'pingsmash.fr'
 sub = 'johanna'
 subdomain = f'{sub}.{zone_name}'
 record_id = '5323757454'
-public_ip = '157.250.46.39'
+public_ip = '216.168.196.126'
 
 # OVH API endpoint
 ovh_endpoint = 'ovh-eu'
