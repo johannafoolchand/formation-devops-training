@@ -34,6 +34,8 @@ jobs:
     needs: build_and_push
     env:
       APP_VERSION: ${{ needs.build_and_push.outputs.app_version }}
+      POSTGRES_PASSWORD: ci-test-password
+      SECRET_KEY: ci-test-secret-key-not-for-production
     steps:
       - name: Restart Docker
         run: sudo systemctl restart docker
