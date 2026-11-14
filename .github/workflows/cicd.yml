@@ -81,10 +81,11 @@ jobs:
           docker network inspect formation-devops-training_default
           sudo chown -R $USER:$USER /home/runner/work/formation-devops-training/
           sudo chmod 755 /home/runner/work/formation-devops-training
-          pytest tests/test_app.py -q
+          python -m pytest tests/test_app.py -q
       - name: Check error logs
         run: |
           if [ -f error.log ]; then cat error.log; fi
+          docker-compose -f docker-compose.yml logs --no-color --tail=100 || true
           
   deploy:
     runs-on: self-hosted
