@@ -1,164 +1,103 @@
-<<<<<<< HEAD
-from flask import Flask, render_template, request, redirect, url_for, flash
-from prometheus_client import Counter, Histogram, generate_latest
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import desc
+"""Small Flask ToDo application with PostgreSQL support and Prometheus metrics."""
 import os
 import time
-import logging
 
-logging.basicConfig(level=logging.DEBUG)
+from flask import Flask, Response, flash, redirect, render_template, request, url_for
+from flask_sqlalchemy import SQLAlchemy
+from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_latest
 
-app = Flask(__name__)
+db = SQLAlchemy()
 
-# Configuration du chemin relatif pour la base de données PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@db:5432/mydatabase'
-app.config['SECRET_KEY'] = 'secret_key'  # Clé secrète pour les messages flash
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Création de l'objet SQLAlchemy
-db = SQLAlchemy(app)
-
-# Définition du modèle Task
-class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String(200), nullable=False)
-
-
-# Compteur et histogramme pour les métriques Prometheus
 REQUEST_COUNT = Counter(
-    'http_requests_total', 'Total number of HTTP requests',
-    ['method', 'endpoint', 'http_status']
+    "todo_http_requests_total",
+    "Total HTTP requests handled by the ToDo application",
+    ["method", "endpoint", "status"],
 )
 REQUEST_LATENCY = Histogram(
-    'http_request_duration_seconds', 'HTTP request latency',
-    ['method', 'endpoint']
+    "todo_http_request_duration_seconds",
+    "HTTP request duration in seconds",
+    ["method", "endpoint"],
 )
 
-# Route pour exposer les métriques Prometheus
-@app.route('/metrics')
-def metrics():
-    return generate_latest()
 
-# Fonction exécutée avant chaque requête
-@app.before_request
-def before_request():
-    request._start_time = time.time()
+def create_app(test_config=None):
+    app = Flask(__name__)
+    app.config.from_mapping(
+        SECRET_KEY=os.getenv("SECRET_KEY", "local-development-key-change-me"),
+        SQLALCHEMY_DATABASE_URI=os.getenv(
+            "DATABASE_URL", "sqlite:///tasks.db"
+        ),
+        SQLALCHEMY_TRACK_MODIFICATIONS=False,
+    )
+    if test_config:
+        app.config.update(test_config)
 
-# Fonction exécutée après chaque requête pour enregistrer les métriques
-@app.after_request
-def after_request(response):
-    if request.endpoint in ['index', 'add', 'delete', 'update']:
-        request_end_time = time.time()
-        request_latency = request_end_time - request._start_time
-        path = request.path
-        REQUEST_COUNT.labels(request.method, path, response.status_code).inc()
-        REQUEST_LATENCY.labels(request.method, path).observe(request_latency)
-    return response
+    db.init_app(app)
 
+    class Task(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        description = db.Column(db.String(200), nullable=False)
 
-# Route pour afficher les tâches
-@app.route('/')
-def index():
-    tasks = Task.query.all()
-    return render_template('index.html', tasks=tasks)
+    app.extensions["task_model"] = Task
 
-# Route pour ajouter une nouvelle tâche
-@app.route('/add', methods=['POST'])
-def add():
-    task_description =request.form.get("task") 
-    if task_description:
-        new_task = Task(description=task_description)
-        db.session.add(new_task)
-        db.session.commit()
-        flash('Tâche ajoutée avec succès.', 'success')
-    else:
-        flash('La description de la tâche ne peut pas être vide.', 'error')
-    return redirect(url_for('index'))
+    @app.before_request
+    def start_timer():
+        request.start_time = time.perf_counter()
 
+    @app.after_request
+    def record_metrics(response):
+        if request.endpoint and request.endpoint != "metrics":
+            elapsed = time.perf_counter() - getattr(
+                request, "start_time", time.perf_counter()
+            )
+            REQUEST_COUNT.labels(
+                request.method, request.endpoint, str(response.status_code)
+            ).inc()
+            REQUEST_LATENCY.labels(request.method, request.endpoint).observe(elapsed)
+        return response
 
-# Route pour supprimer une tâche
-@app.route('/delete/<int:id>')
-def delete(id):
-    task_to_delete = Task.query.get_or_404(id)
-    db.session.delete(task_to_delete)
-    db.session.commit()
-    flash('Tâche supprimée avec succès.', 'success')
-    return redirect(url_for('index'))
+    @app.get("/")
+    def index():
+        tasks = Task.query.order_by(Task.id.desc()).all()
+        return render_template("index.html", tasks=tasks)
 
-# Route pour gérer les erreurs 404
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('404.html'), 404
-
-# Démarrage de l'application Flask
-if __name__ == '__main__':
-    time.sleep(10)
-    with app.app_context():
-        db.create_all()  # Cette commande crée la base de données et la table Task si elles n'existent pas déjà
-    app.run(host='0.0.0.0', port=5000, debug=True)
-
-=======
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import desc
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
-app.config['SECRET_KEY'] = 'secret_key'  # Clé secrète pour les messages flash
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Désactive les avertissements de modification SQLAlchemy
-db = SQLAlchemy(app)
-
-class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String(200), nullable=False)
-
-@app.route('/')
-def index():
-    page = request.args.get('page', 1, type=int)  # Récupère le numéro de page à partir de l'URL
-    per_page = 5  # Nombre de tâches à afficher par page
-    tasks = Task.query.order_by(desc(Task.id)).paginate(page=page, per_page=per_page)
-    return render_template('index.html', tasks=tasks)
-
-@app.route('/add', methods=['POST'])
-def add():
-    task_description = request.form['task']
-    if not task_description:
-        flash('La description de la tâche ne peut pas être vide.', 'error')
-    else:
-        new_task = Task(description=task_description)
-        db.session.add(new_task)
-        db.session.commit()
-        flash('Tâche ajoutée avec succès.', 'success')
-    return redirect(url_for('index'))
-
-@app.route('/edit/<int:task_id>', methods=['GET', 'POST'])
-def edit(task_id):
-    task = Task.query.get_or_404(task_id)
-    if request.method == 'POST':
-        task.description = request.form['task']
-        if not task.description:
-            flash('La description de la tâche ne peut pas être vide.', 'error')
+    @app.post("/add")
+    def add():
+        description = request.form.get("task", "").strip()
+        if not description:
+            flash("La description ne peut pas être vide.", "error")
+        elif len(description) > 200:
+            flash("La tâche ne peut pas dépasser 200 caractères.", "error")
         else:
+            db.session.add(Task(description=description))
             db.session.commit()
-            flash('Tâche modifiée avec succès.', 'success')
-            return redirect(url_for('index'))
-    return render_template('edit.html', task=task)
+            flash("Tâche ajoutée.", "success")
+        return redirect(url_for("index"))
 
-@app.route('/delete/<int:task_id>', methods=['POST'])
-def delete(task_id):
+    @app.post("/delete/<int:task_id>")
+    def delete(task_id):
+        task = db.get_or_404(Task, task_id)
+        db.session.delete(task)
+        db.session.commit()
+        flash("Tâche supprimée.", "success")
+        return redirect(url_for("index"))
 
-    task_to_delete = Task.query.get_or_404(task_id)
-    db.session.delete(task_to_delete)
-    db.session.commit()
-    flash('Tâche supprimée avec succès.', 'success')
-    return redirect(url_for('index'))
+    @app.get("/metrics")
+    def metrics():
+        return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('404.html'), 404
+    @app.errorhandler(404)
+    def not_found(_error):
+        return render_template("404.html"), 404
 
-if __name__ == '__main__':
+    return app
+
+
+app = create_app()
+Task = app.extensions["task_model"]
+
+
+if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(host='0.0.0.0', debug=True, port=5000)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", "5000")), debug=False)
