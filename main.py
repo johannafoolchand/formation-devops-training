@@ -8,6 +8,12 @@ from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_
 
 db = SQLAlchemy()
 
+
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(200), nullable=False)
+
+
 REQUEST_COUNT = Counter(
     "todo_http_requests_total",
     "Total HTTP requests handled by the ToDo application",
@@ -24,20 +30,13 @@ def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_mapping(
         SECRET_KEY=os.getenv("SECRET_KEY", "local-development-key-change-me"),
-        SQLALCHEMY_DATABASE_URI=os.getenv(
-            "DATABASE_URL", "sqlite:///tasks.db"
-        ),
+        SQLALCHEMY_DATABASE_URI=os.getenv("DATABASE_URL", "sqlite:///tasks.db"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
     )
     if test_config:
         app.config.update(test_config)
 
     db.init_app(app)
-
-    class Task(db.Model):
-        id = db.Column(db.Integer, primary_key=True)
-        description = db.Column(db.String(200), nullable=False)
-
     app.extensions["task_model"] = Task
 
     @app.before_request
@@ -94,7 +93,6 @@ def create_app(test_config=None):
 
 
 app = create_app()
-Task = app.extensions["task_model"]
 
 
 if __name__ == "__main__":
