@@ -6,6 +6,7 @@ A small task manager built with Flask and SQLAlchemy. This project demonstrates 
 ![Flask](https://img.shields.io/badge/Flask-Web%20app-C58BEA?style=flat-square&logo=flask&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-9B7EDB?style=flat-square&logo=docker&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-C58BEA?style=flat-square&logo=postgresql&logoColor=white)
+[![Tests](https://github.com/johannafoolchand/formation-devops-training/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/johannafoolchand/formation-devops-training/actions/workflows/tests.yml) [![CI](https://github.com/johannafoolchand/formation-devops-training/actions/workflows/cicd.yml/badge.svg?branch=main)](https://github.com/johannafoolchand/formation-devops-training/actions/workflows/cicd.yml)
 
 ## Project at a glance
 
