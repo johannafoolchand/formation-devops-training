@@ -1,6 +1,6 @@
 import pytest
 
-from main import create_app, db
+from main import Task, create_app, db
 
 
 @pytest.fixture()
@@ -12,8 +12,8 @@ def client():
     })
     with app.app_context():
         db.create_all()
-        with app.test_client() as client:
-            yield client
+        with app.test_client() as test_client:
+            yield test_client
         db.session.remove()
         db.drop_all()
 
@@ -21,32 +21,35 @@ def client():
 def test_home_page_is_available(client):
     response = client.get("/")
     assert response.status_code == 200
-    assert b"Daily Tasks" in response.data
+    assert "Daily Tasks" in response.get_data(as_text=True)
 
 
 def test_add_task(client):
     response = client.post("/add", data={"task": "Prepare portfolio"})
     assert response.status_code == 302
-    assert b"Prepare portfolio" in client.get("/").data
+    assert "Prepare portfolio" in client.get("/").get_data(as_text=True)
 
 
 def test_empty_task_is_rejected(client):
     client.post("/add", data={"task": "   "})
-    assert b"Aucune tÃ¢che" in client.get("/").data
+    page = client.get("/").get_data(as_text=True)
+    assert "La description ne peut pas être vide." in page
+    assert Task.query.count() == 0
 
 
 def test_task_longer_than_200_characters_is_rejected(client):
     client.post("/add", data={"task": "x" * 201})
-    assert b"ne peut pas dÃ©passer 200" in client.get("/").data
+    page = client.get("/").get_data(as_text=True)
+    assert "La tâche ne peut pas dépasser 200 caractères." in page
+    assert Task.query.count() == 0
 
 
 def test_delete_task(client):
     client.post("/add", data={"task": "Temporary task"})
-    from main import Task
     task = Task.query.first()
     response = client.post(f"/delete/{task.id}")
     assert response.status_code == 302
-    assert b"Temporary task" not in client.get("/").data
+    assert "Temporary task" not in client.get("/").get_data(as_text=True)
 
 
 def test_delete_unknown_task_returns_404(client):
