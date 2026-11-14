@@ -1,129 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!doctype html>
+<html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #ecdbe8}
-    span.s1 {font-kerning: none}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Une application simple pour organiser ses tâches.">
+  <title>Daily Tasks — ToDo List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;!DOCTYPE html&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;html lang="fr"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;head&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;title&gt;ToDo List - Mise à jour&lt;/title&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;style&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>body {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>background-color: #f3e9f1;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>color: #333;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 0;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 30px 15px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>.container {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>width: 80%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>max-width: 800px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 0 auto;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 25px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>background: #fff;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 12px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>h1 {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>text-align: center;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>color: #b66bb5;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>ul {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>list-style: none;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 0;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>li {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>display: flex;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>justify-content: space-between;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>align-items: center;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>gap: 12px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 10px 0;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 12px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>background: #f8f1f8;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 8px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>overflow-wrap: anywhere;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>form {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>margin-top: 20px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>input[type="text"] {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>box-sizing: border-box;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>width: 100%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 12px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>border: 1px solid #d9b8d8;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 6px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 10px 0;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>button {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>background: #b66bb5;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>color: white;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>border: none;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 10px 16px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 6px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>cursor: pointer;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>button:hover {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>background: #985398;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>@media (max-width: 600px) {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>.container {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                </span>box-sizing: border-box;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                </span>width: 100%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>li {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                </span>align-items: flex-start;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/style&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;/head&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;body&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;main class="container"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;h1&gt;Ma ToDo List&lt;/h1&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;ul&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>{% for task in tasks %}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;li&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;span&gt;{{ task.description }}&lt;/span&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;form action="{{ url_for('delete', task_id=task.id) }}" method="POST"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                    </span>&lt;button type="submit"&gt;Supprimer&lt;/button&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/form&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/li&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>{% endfor %}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/ul&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;form action="{{ url_for('add') }}" method="POST"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;label for="task"&gt;Nouvelle tâche :&lt;/label&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;input type="text" id="task" name="task" required&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;button type="submit"&gt;Ajouter&lt;/button&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/form&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/main&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;/body&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #7a4878; -webkit-text-stroke: #7a4878"><span class="s1"><b>&lt;/html&gt;</b></span></h1>
+  <main class="container">
+    <p class="eyebrow">ORGANISATION PERSONNELLE</p>
+    <h1>Daily Tasks<span>.</span></h1>
+    <p class="intro">Une chose après l'autre. Organise ta journée simplement.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="messages" role="status" aria-live="polite">
+          {% for category, message in messages %}
+            <p class="message {{ category }}">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form class="add-form" action="{{ url_for('add') }}" method="post">
+      <label for="task">Nouvelle tâche</label>
+      <div class="input-row">
+        <input id="task" name="task" type="text" maxlength="200"
+               placeholder="Ex. Préparer mon prochain projet…" required>
+        <button type="submit">Ajouter</button>
+      </div>
+    </form>
+
+    <section class="tasks" aria-labelledby="tasks-title">
+      <div class="section-heading">
+        <h2 id="tasks-title">Ma liste</h2>
+        <span class="count">{{ tasks|length }} tâche(s)</span>
+      </div>
+      {% if tasks %}
+        <ul>
+          {% for task in tasks %}
+            <li>
+              <span>{{ task.description }}</span>
+              <form action="{{ url_for('delete', task_id=task.id) }}" method="post">
+                <button class="delete-button" type="submit"
+                        aria-label="Supprimer : {{ task.description }}">Supprimer</button>
+              </form>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="empty">Aucune tâche pour le moment. Ajoute ta première tâche ci-dessus.</p>
+      {% endif %}
+    </section>
+    <footer>Conçu avec Flask · PostgreSQL · Prometheus</footer>
+  </main>
 </body>
 </html>
