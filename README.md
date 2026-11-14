@@ -2,6 +2,21 @@
 
 A small task manager built with Flask and SQLAlchemy. This project demonstrates a containerized Python web application, PostgreSQL persistence, automated tests, CI with GitHub Actions, and Prometheus metrics.
 
+![Python](https://img.shields.io/badge/Python-3.11%2B-9B7EDB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web%20app-C58BEA?style=flat-square&logo=flask&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-9B7EDB?style=flat-square&logo=docker&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-C58BEA?style=flat-square&logo=postgresql&logoColor=white)
+
+## Project at a glance
+
+| Area | Implementation |
+| --- | --- |
+| Backend | Flask application and SQLAlchemy ORM |
+| Database | PostgreSQL in Compose; SQLite for local tests |
+| Containers | Dockerfile and Docker Compose |
+| Quality | Pytest suite and GitHub Actions |
+| Observability | Prometheus metrics exposed at `/metrics` |
+
 ## Features
 
 - Create and delete tasks
@@ -14,17 +29,22 @@ A small task manager built with Flask and SQLAlchemy. This project demonstrates 
 
 ## Architecture
 
-```text
-Browser
-  |
-  v
-Flask application (port 5000) ----> Prometheus metrics (/metrics)
-  |
-  v
-SQLAlchemy
-  |
-  v
-PostgreSQL (Docker volume)
+The browser interacts with the Flask application. SQLAlchemy handles persistence, while Prometheus can scrape the dedicated metrics endpoint.
+
+```mermaid
+flowchart TD
+    U[Browser] -->|HTTP requests| F[Flask application]
+    F --> V[Input validation]
+    V --> O[SQLAlchemy ORM]
+    O --> DB[(PostgreSQL)]
+    F --> M[/metrics endpoint/]
+    P[Prometheus] -->|scrape| M
+    classDef app fill:#24162f,stroke:#c58bea,color:#fff
+    classDef data fill:#171c2b,stroke:#9b7edb,color:#fff
+    classDef obs fill:#35172f,stroke:#ed83d0,color:#fff
+    class F,V,O app
+    class DB data
+    class M,P obs
 ```
 
 ## Run with Docker Compose
