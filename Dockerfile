@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
 COPY templates/ ./templates/
-COPY static/ ./static/
+RUN mkdir -p static && cp templates/styles.css static/styles.css
 
 RUN useradd --create-home appuser
 USER appuser
